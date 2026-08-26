@@ -1,24 +1,37 @@
+/* 1. Define Theme Variables */
 :root {
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
-  background-color: #f8f9fa; /* Standard light grey website background */
-  color: #212529;
+  --bg-body: #f8f9fa;
+  --bg-panel: #ffffff;
+  --bg-input: #ffffff;
+  --bg-output: #f8f9fa;
+  --bg-btn: #e9ecef;
+  --bg-btn-hover: #dde2e6;
+
+  --text-main: #212529;
+  --text-muted: #6c757d;
+
+  --border-color: #ced4da;
+  --border-focus: #80bdff;
+  --shadow-color: rgba(0, 0, 0, 0.03);
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Centers everything perfectly vertically */
-  min-height: 100vh;
-  background-color: #f8f9fa;
-  color: #212529;
-  /* padding-top: 5vh; <-- Remove this line entirely */
+[data-theme="dark"] {
+  --bg-body: #121212;
+  --bg-panel: #1e1e1e;
+  --bg-input: #1e1e1e;
+  --bg-output: #161616;
+  --bg-btn: #2d2d2d;
+  --bg-btn-hover: #3d3d3d;
+
+  --text-main: #f1f3f5;
+  --text-muted: #868e96;
+
+  --border-color: #333333;
+  --border-focus: #0ea5e9;
+  --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
-/* Also ensure your html tag isn't adding hidden margins */
+/* 2. Global Resets */
 html {
   box-sizing: border-box;
 }
@@ -27,4 +40,27 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+
+  /* Apply Theme Colors */
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+#root {
+  width: 100%;
 }

@@ -1,20 +1,45 @@
-#root {
-  width: 100%;
-}
-
+/* Container Layout */
 .fx-container {
   max-width: 900px;
   width: 100%;
   margin: 0 auto;
   padding: 20px;
-  box-sizing: border-box;
 }
 
-/* Header */
-/* Header */
+/* Header & Theme Toggle */
 .fx-header {
   text-align: center;
   margin-bottom: 30px;
+  position: relative;
+}
+
+.fx-header-top {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--bg-btn);
+  color: var(--text-main);
+}
+
+.theme-icon {
+  width: 18px;
+  height: 18px;
 }
 
 .fx-logo-wrapper {
@@ -27,26 +52,29 @@
 .fx-title {
   font-size: 32px;
   font-weight: 600;
-  color: #212529;
+  color: var(--text-main);
   margin: 0;
   letter-spacing: -0.5px;
 }
 
 .fx-subtitle {
-  display: block; /* This brings the subtitle back */
   font-size: 16px;
-  color: #6c757d;
+  color: var(--text-muted);
   margin: 0;
   font-weight: 400;
 }
 
 /* Main Converter Panel */
 .converter-panel {
-  background: #ffffff;
-  border: 1px solid #dee2e6;
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 40px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .converter-row {
@@ -56,7 +84,6 @@
   align-items: center;
 }
 
-/* Desktop layout: Side by side */
 @media (min-width: 768px) {
   .converter-row {
     flex-direction: row;
@@ -69,17 +96,19 @@
   display: flex;
   width: 100%;
   flex: 1;
-  height: 80px; /* <-- ADD THIS: Fixed height */
-  border: 1px solid #ced4da;
+  height: 80px;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   overflow: hidden;
-  background-color: #ffffff;
-  transition: border-color 0.2s;
+  background-color: var(--bg-input);
+  transition:
+    border-color 0.2s,
+    background-color 0.3s ease;
 }
 
 .input-group:focus-within {
-  border-color: #80bdff;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(128, 189, 255, 0.15);
 }
 
 .huge-input {
@@ -88,13 +117,15 @@
   min-width: 0;
   height: 100%;
   border: none;
+  background-color: transparent;
   padding: 0 20px;
   font-size: 32px;
-  color: #495057;
+  color: var(--text-main);
   outline: none;
   box-sizing: border-box;
   -moz-appearance: textfield;
 }
+
 .huge-input::-webkit-outer-spin-button,
 .huge-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -102,19 +133,19 @@
 }
 
 .readonly-output {
-  background-color: #f8f9fa;
+  background-color: var(--bg-output);
   display: flex;
   align-items: center;
 }
 
 .currency-select {
   border: none;
-  border-left: 1px solid #ced4da;
-  background-color: #f8f9fa;
+  border-left: 1px solid var(--border-color);
+  background-color: transparent;
   padding: 0 20px;
   font-size: 18px;
   font-weight: 500;
-  color: #495057;
+  color: var(--text-main);
   cursor: pointer;
   outline: none;
 }
@@ -128,7 +159,7 @@
 }
 
 .swap-btn {
-  background-color: #e9ecef;
+  background-color: var(--bg-btn);
   border: none;
   border-radius: 50%;
   width: 44px;
@@ -137,14 +168,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #495057;
+  color: var(--text-main);
   transition:
     background-color 0.2s ease,
     transform 0.3s ease;
 }
 
 .swap-btn:hover {
-  background-color: #dde2e6;
+  background-color: var(--bg-btn-hover);
   transform: rotate(180deg);
 }
 
@@ -153,19 +184,19 @@
   height: 20px;
 }
 
-/* Rate Info */
+/* Rate Info & Loader */
 .rate-info {
   text-align: center;
   margin-top: 30px;
   font-size: 14px;
-  color: #6c757d;
+  color: var(--text-muted);
 }
 
 .spinner {
   width: 24px;
   height: 24px;
   animation: spin 1s linear infinite;
-  color: #adb5bd;
+  color: var(--text-muted);
 }
 
 @keyframes spin {
@@ -181,5 +212,5 @@
   text-align: center;
   margin-top: 40px;
   font-size: 13px;
-  color: #adb5bd;
+  color: var(--text-muted);
 }
