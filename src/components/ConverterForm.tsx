@@ -1,7 +1,9 @@
 import { ArrowRightLeft, RefreshCw } from 'lucide-react';
 import type { CurrenciesResponse } from '../types/fx';
+import { CurrencySelect } from './CurrencySelect';
 
 interface ConverterFormProps {
+  // ... (keep your existing props interface exactly the same)
   currencies: CurrenciesResponse;
   amount: number | '';
   setAmount: (val: number | '') => void;
@@ -16,17 +18,8 @@ interface ConverterFormProps {
 }
 
 export function ConverterForm({
-  currencies,
-  amount,
-  setAmount,
-  fromCurrency,
-  setFromCurrency,
-  toCurrency,
-  setToCurrency,
-  onSwap,
-  result,
-  loading,
-  rateInfo
+  currencies, amount, setAmount, fromCurrency, setFromCurrency,
+  toCurrency, setToCurrency, onSwap, result, loading, rateInfo
 }: ConverterFormProps) {
   return (
     <div className="converter-panel">
@@ -41,15 +34,11 @@ export function ConverterForm({
             className="huge-input"
             min="0"
           />
-          <select
+          <CurrencySelect
+            currencies={currencies}
             value={fromCurrency}
-            onChange={(e) => setFromCurrency(e.target.value)}
-            className="currency-select"
-          >
-            {Object.entries(currencies).map(([code]) => (
-              <option key={code} value={code}>{code}</option>
-            ))}
-          </select>
+            onChange={setFromCurrency}
+          />
         </div>
 
         {/* Center: Swap Button */}
@@ -64,15 +53,11 @@ export function ConverterForm({
           <div className="huge-input readonly-output">
             {loading ? <RefreshCw className="spinner" /> : (result !== null ? result.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 }) : '')}
           </div>
-          <select
+          <CurrencySelect
+            currencies={currencies}
             value={toCurrency}
-            onChange={(e) => setToCurrency(e.target.value)}
-            className="currency-select"
-          >
-            {Object.entries(currencies).map(([code]) => (
-              <option key={code} value={code}>{code}</option>
-            ))}
-          </select>
+            onChange={setToCurrency}
+          />
         </div>
 
       </div>

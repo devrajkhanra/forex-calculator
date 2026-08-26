@@ -96,14 +96,14 @@
   display: flex;
   width: 100%;
   flex: 1;
-  height: 80px;
+  height: 80px; /* Locked height prevents layout shift */
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  overflow: hidden;
   background-color: var(--bg-input);
   transition:
     border-color 0.2s,
     background-color 0.3s ease;
+  position: relative; /* Needed for the absolute dropdown to position correctly */
 }
 
 .input-group:focus-within {
@@ -114,7 +114,7 @@
 .huge-input {
   flex: 1;
   width: 100%;
-  min-width: 0;
+  min-width: 0; /* Prevents long numbers from stretching the box */
   height: 100%;
   border: none;
   background-color: transparent;
@@ -138,16 +138,77 @@
   align-items: center;
 }
 
-.currency-select {
+/* Custom Select Dropdown System */
+.custom-select-container {
+  position: relative;
+  display: flex;
+  flex-shrink: 0; /* Protects the dropdown from being squished */
+}
+
+.custom-select-trigger {
+  background: transparent;
   border: none;
   border-left: 1px solid var(--border-color);
-  background-color: transparent;
-  padding: 0 20px;
+  padding: 0 15px 0 20px;
   font-size: 18px;
   font-weight: 500;
   color: var(--text-main);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   outline: none;
+  height: 100%;
+}
+
+.dropdown-icon {
+  color: var(--text-muted);
+}
+
+.custom-select-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 120px;
+  max-height: 250px;
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: 0 8px 24px var(--shadow-color);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  margin-top: 4px;
+
+  /* Hides the scrollbar but keeps scroll functionality */
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.custom-select-menu::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.custom-select-option {
+  background: transparent;
+  border: none;
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.custom-select-option:hover {
+  background-color: var(--bg-body);
+}
+
+.custom-select-option.selected {
+  color: var(--border-focus);
+  font-weight: 700;
 }
 
 /* Swap Button */
@@ -213,4 +274,33 @@
   margin-top: 40px;
   font-size: 13px;
   color: var(--text-muted);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .fx-container {
+    padding: 15px;
+  }
+
+  .converter-panel {
+    padding: 20px; /* Reduces massive padding on mobile */
+  }
+
+  .huge-input {
+    font-size: 24px; /* Scales down text */
+    padding: 0 15px;
+  }
+
+  .custom-select-trigger {
+    padding: 0 10px 0 15px;
+    font-size: 16px;
+  }
+
+  .fx-title {
+    font-size: 24px;
+  }
+
+  .input-group {
+    height: 65px; /* Shorter boxes for phone screens */
+  }
 }

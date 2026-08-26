@@ -1,26 +1,21 @@
 import { Header } from './components/Header';
 import { ConverterForm } from './components/ConverterForm';
 import { useForex } from './hooks/useForex';
+import { useTheme } from './hooks/useTheme';
 import './App.css';
 
 export default function App() {
   const {
-    currencies,
-    amount,
-    setAmount,
-    fromCurrency,
-    setFromCurrency,
-    toCurrency,
-    setToCurrency,
-    result,
-    loading,
-    rateInfo,
-    handleSwap
+    currencies, amount, setAmount, fromCurrency, setFromCurrency,
+    toCurrency, setToCurrency, result, loading, rateInfo, handleSwap
   } = useForex();
+
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="fx-container">
-      <Header />
+      <Header theme={theme} toggleTheme={toggleTheme} />
+
       <main className="fx-main-content">
         <ConverterForm
           currencies={currencies}
@@ -36,6 +31,7 @@ export default function App() {
           rateInfo={rateInfo}
         />
       </main>
+
       <footer className="fx-app-footer">
         Powered by Frankfurter API
       </footer>
