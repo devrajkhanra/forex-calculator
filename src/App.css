@@ -1,0 +1,185 @@
+#root {
+  width: 100%;
+}
+
+.fx-container {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Header */
+/* Header */
+.fx-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.fx-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.fx-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #212529;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.fx-subtitle {
+  display: block; /* This brings the subtitle back */
+  font-size: 16px;
+  color: #6c757d;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Main Converter Panel */
+.converter-panel {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.converter-row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Desktop layout: Side by side */
+@media (min-width: 768px) {
+  .converter-row {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* Input + Select Group */
+.input-group {
+  display: flex;
+  width: 100%;
+  flex: 1;
+  height: 80px; /* <-- ADD THIS: Fixed height */
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #ffffff;
+  transition: border-color 0.2s;
+}
+
+.input-group:focus-within {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.huge-input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  padding: 0 20px;
+  font-size: 32px;
+  color: #495057;
+  outline: none;
+  box-sizing: border-box;
+  -moz-appearance: textfield;
+}
+.huge-input::-webkit-outer-spin-button,
+.huge-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.readonly-output {
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+}
+
+.currency-select {
+  border: none;
+  border-left: 1px solid #ced4da;
+  background-color: #f8f9fa;
+  padding: 0 20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #495057;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Swap Button */
+.swap-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.swap-btn {
+  background-color: #e9ecef;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #495057;
+  transition:
+    background-color 0.2s ease,
+    transform 0.3s ease;
+}
+
+.swap-btn:hover {
+  background-color: #dde2e6;
+  transform: rotate(180deg);
+}
+
+.swap-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Rate Info */
+.rate-info {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  color: #adb5bd;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fx-app-footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #adb5bd;
+}

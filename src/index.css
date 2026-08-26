@@ -1,0 +1,30 @@
+:root {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  background-color: #f8f9fa; /* Standard light grey website background */
+  color: #212529;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centers everything perfectly vertically */
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  color: #212529;
+  /* padding-top: 5vh; <-- Remove this line entirely */
+}
+
+/* Also ensure your html tag isn't adding hidden margins */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
