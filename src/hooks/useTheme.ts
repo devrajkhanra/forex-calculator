@@ -1,20 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import { ThemeContext, type ThemeContextValue } from '../contexts/theme-context';
 
-export function useTheme() {
-    const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-        const savedTheme = localStorage.getItem('fx-theme');
-        if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme;
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    });
-
-    useEffect(() => {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('fx-theme', theme);
-    }, [theme]);
-
-    const toggleTheme = () => {
-        setTheme(prev => prev === 'light' ? 'dark' : 'light');
-    };
-
-    return { theme, toggleTheme };
+export function useTheme(): ThemeContextValue {
+  const ctx = useContext(ThemeContext);
+  if (!ctx) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return ctx;
 }

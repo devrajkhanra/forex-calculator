@@ -1,22 +1,16 @@
-import { Sun, Moon } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
 
-interface HeaderProps {
-    theme: 'light' | 'dark';
-    toggleTheme: () => void;
-}
+export function Header() {
+  return (
+    <header className="fx-header">
+      <div className="fx-header-inner">
+        <div className="fx-brand">
+          <h1 className="fx-title">Daily Codify</h1>
+          <p className="fx-subtitle">Currency Converter | Live Exchange Rates</p>
+        </div>
 
-export function Header({ theme, toggleTheme }: HeaderProps) {
-    return (
-        <header className="fx-header">
-            <div className="fx-header-top">
-                <button onClick={toggleTheme} className="theme-toggle-btn" aria-label="Toggle theme">
-                    {theme === 'light' ? <Moon className="theme-icon" /> : <Sun className="theme-icon" />}
-                </button>
-            </div>
-            <div className="fx-logo-wrapper">
-                <h1 className="fx-title">Daily Codify</h1>
-            </div>
-            <p className="fx-subtitle">Currency Converter | Live Exchange Rates</p>
-        </header>
-    );
+        <ThemeToggle />
+      </div>
+    </header>
+  );
 }

@@ -5,6 +5,25 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Performance: warm up the connection to the exchange-rate API before the app requests it -->
+    <link rel="preconnect" href="https://api.frankfurter.dev" crossorigin />
+    <link rel="dns-prefetch" href="https://api.frankfurter.dev" />
+
+    <!-- Sets the theme attribute before first paint to avoid a light/dark flash -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('fx-theme');
+          var theme = saved === 'light' || saved === 'dark'
+            ? saved
+            : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          /* localStorage unavailable (e.g. private mode) — default styling applies */
+        }
+      })();
+    </script>
+
     <!-- Primary SEO -->
     <title>Daily Codify - Currency Converter</title>
     <meta name="title" content="Daily Codify - Currency Converter" />

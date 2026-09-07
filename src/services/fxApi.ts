@@ -8,8 +8,13 @@ export const fetchCurrencies = async (): Promise<CurrenciesResponse> => {
     return response.data;
 }
 
-export const convertCurrency = async (amount: number, from: string, to: string): Promise<number> => {
+export const convertCurrency = async (
+    amount: number,
+    from: string,
+    to: string,
+    signal?: AbortSignal
+): Promise<number> => {
     if (isNaN(amount) || from === to) return amount;
-    const response = await axios.get<LatestRateResponse>(`${BASE_URL}/latest?amount=${amount}&from=${from}&to=${to}`);
+    const response = await axios.get<LatestRateResponse>(`${BASE_URL}/latest?amount=${amount}&from=${from}&to=${to}`, { signal });
     return response.data.rates[to];
 }

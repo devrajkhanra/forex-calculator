@@ -2,7 +2,6 @@ import { Header } from './components/Header';
 import { ConverterForm } from './components/ConverterForm';
 import { SeoContent } from './components/SeoContent';
 import { useForex } from './hooks/useForex';
-import { useTheme } from './hooks/useTheme';
 import './App.css';
 
 export default function App() {
@@ -11,33 +10,33 @@ export default function App() {
     toCurrency, setToCurrency, result, loading, rateInfo, handleSwap
   } = useForex();
 
-  const { theme, toggleTheme } = useTheme();
-
   return (
-    <div className="fx-container">
-      <Header theme={theme} toggleTheme={toggleTheme} />
+    <div className="fx-page">
+      <Header />
 
-      <main className="fx-main-content">
-        <ConverterForm
-          currencies={currencies}
-          amount={amount}
-          setAmount={setAmount}
-          fromCurrency={fromCurrency}
-          setFromCurrency={setFromCurrency}
-          toCurrency={toCurrency}
-          setToCurrency={setToCurrency}
-          onSwap={handleSwap}
-          result={result}
-          loading={loading}
-          rateInfo={rateInfo}
-        />
+      <div className="fx-container">
+        <main className="fx-main-content">
+          <ConverterForm
+            currencies={currencies}
+            amount={amount}
+            setAmount={setAmount}
+            fromCurrency={fromCurrency}
+            setFromCurrency={setFromCurrency}
+            toCurrency={toCurrency}
+            setToCurrency={setToCurrency}
+            onSwap={handleSwap}
+            result={result}
+            loading={loading}
+            rateInfo={rateInfo}
+          />
 
-        <SeoContent />
-      </main>
+          <SeoContent />
+        </main>
 
-      <footer className="fx-app-footer">
-        Powered by Frankfurter API
-      </footer>
+        <footer className="fx-app-footer">
+          Powered by Frankfurter API
+        </footer>
+      </div>
     </div>
   );
 }

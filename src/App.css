@@ -1,25 +1,50 @@
+/* Page wrapper */
+.fx-page {
+  min-height: 100vh;
+}
+
 /* Container Layout */
 .fx-container {
   max-width: 900px;
   width: 100%;
   margin: 0 auto;
   padding: 20px;
+  padding-top: calc(var(--header-height) + 30px);
 }
 
-/* Header & Theme Toggle */
+/* Fixed Header */
 .fx-header {
-  text-align: center;
-  margin-bottom: 30px;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  z-index: 100;
+  background-color: var(--bg-panel);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px var(--shadow-color);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
-.fx-header-top {
+.fx-header-inner {
+  max-width: 900px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.fx-brand {
+  min-width: 0; /* allows text to truncate instead of pushing the toggle off-screen */
 }
 
 .theme-toggle-btn {
+  flex-shrink: 0;
   background: transparent;
   border: 1px solid var(--border-color);
   border-radius: 4px;
@@ -42,26 +67,25 @@
   height: 18px;
 }
 
-.fx-logo-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
 .fx-title {
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 600;
   color: var(--text-main);
   margin: 0;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .fx-subtitle {
-  font-size: 16px;
+  font-size: 12px;
   color: var(--text-muted);
   margin: 0;
   font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Main Converter Panel */
@@ -310,8 +334,17 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 640px) {
+  :root {
+    --header-height: 56px;
+  }
+
   .fx-container {
     padding: 15px;
+    padding-top: calc(var(--header-height) + 20px);
+  }
+
+  .fx-header-inner {
+    padding: 0 15px;
   }
 
   .converter-panel {
@@ -329,7 +362,11 @@
   }
 
   .fx-title {
-    font-size: 24px;
+    font-size: 16px;
+  }
+
+  .fx-subtitle {
+    font-size: 11px;
   }
 
   .input-group {
