@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://forex-calculator-blush.vercel.app/sitemap.xml

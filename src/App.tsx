@@ -1,5 +1,6 @@
 import { Header } from './components/Header';
 import { ConverterForm } from './components/ConverterForm';
+import { SeoContent } from './components/SeoContent';
 import { useForex } from './hooks/useForex';
 import { useTheme } from './hooks/useTheme';
 import './App.css';
@@ -30,6 +31,8 @@ export default function App() {
           loading={loading}
           rateInfo={rateInfo}
         />
+
+        <SeoContent />
       </main>
 
       <footer className="fx-app-footer">

@@ -1,35 +1,69 @@
-# React + TypeScript + Vite
+# Currency Converter — Live Forex Exchange Rate Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A free, fast, no-sign-up currency converter built with React, TypeScript, and Vite. Convert between major world currencies using live exchange rates.
 
-Currently, two official plugins are available:
+**Live demo:** https://forex-calculator-blush.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![Currency Converter screenshot](./src/assets/hero.png)
 
-## React Compiler
+## Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Live, regularly updated exchange rates
+- Instant conversion between all major currency pairs (USD, EUR, GBP, JPY, INR, AUD, CAD, and more)
+- One-click swap between "from" and "to" currencies
+- Light/dark theme toggle
+- Fully responsive — works on desktop, tablet, and mobile
+- No account, sign-up, or API key required to use
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+## Tech Stack
 
-## Expanding the Oxlint configuration
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vite.dev/)
+- Exchange rate data powered by the [Frankfurter API](https://www.frankfurter.app/)
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Getting Started
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+Clone the repo and install dependencies:
+
+```bash
+git clone https://github.com/devrajkhanra/forex-calculator.git
+cd forex-calculator
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Run the dev server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Project Structure
+
+```
+src/
+  components/   UI components (Header, ConverterForm, CurrencySelect, ResultDisplay, SeoContent)
+  hooks/        useForex (conversion logic), useTheme (light/dark mode)
+  services/     fxApi.ts — exchange rate API client
+  types/        Shared TypeScript types
+```
+
+## Contributing
+
+Issues and pull requests are welcome. If you spot a bug or have a feature request, please open an issue.
+
+## License
+
+MIT — see [LICENSE](./LICENSE) for details.
