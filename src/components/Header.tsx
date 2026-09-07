@@ -14,9 +14,9 @@ export function Header({ theme, toggleTheme }: HeaderProps) {
                 </button>
             </div>
             <div className="fx-logo-wrapper">
-                <h1 className="fx-title">Currency Converter</h1>
+                <h1 className="fx-title">Daily Codify</h1>
             </div>
-            <p className="fx-subtitle">Live Exchange Rates : FX to FX</p>
+            <p className="fx-subtitle">Currency Converter | Live Exchange Rates</p>
         </header>
     );
 }

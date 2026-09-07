@@ -1,6 +1,6 @@
 {
-  "name": "Currency Converter - Live Forex Exchange Rate Calculator",
-  "short_name": "FX Converter",
+  "name": "Daily Codify - Currency Converter",
+  "short_name": "Daily Codify",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",

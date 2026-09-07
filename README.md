@@ -1,10 +1,10 @@
-# Currency Converter — Live Forex Exchange Rate Calculator
+# Daily Codify
 
-A free, fast, no-sign-up currency converter built with React, TypeScript, and Vite. Convert between major world currencies using live exchange rates.
+Daily Codify is a growing collection of practical tools. The first tool is a free, fast, no-sign-up currency converter built with React, TypeScript, and Vite. Convert between major world currencies using live exchange rates.
 
 **Live demo:** https://forex-calculator-blush.vercel.app/
 
-![Currency Converter screenshot](./src/assets/hero.png)
+![Daily Codify currency converter screenshot](./src/assets/hero.png)
 
 ## Features
 
