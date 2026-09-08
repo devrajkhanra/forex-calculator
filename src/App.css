@@ -610,13 +610,14 @@
   }
 }
 
-/* RGB channel input row — sits inside the same .input-group used by the
-   hex/currency inputs; only the internal channel layout differs. */
-.rgb-input-group {
+/* Multi-field channel input row (used by RGB and HSV inputs) — sits
+   inside the same .input-group used by the hex/currency inputs; only
+   the internal channel layout differs. */
+.color-channel-group {
   align-items: stretch;
 }
 
-.rgb-channel {
+.color-channel {
   flex: 1;
   min-width: 0;
   display: flex;
@@ -627,11 +628,11 @@
   border-left: 1px solid var(--border-color);
 }
 
-.rgb-channel:first-child {
+.color-channel:first-child {
   border-left: none;
 }
 
-.rgb-channel-label {
+.color-channel-label {
   font-size: 11px;
   font-weight: 600;
   color: var(--text-muted);
@@ -639,7 +640,7 @@
   margin-bottom: 2px;
 }
 
-.rgb-channel-input {
+.color-channel-input {
   width: 100%;
   text-align: center;
   font-size: 22px;
@@ -647,11 +648,11 @@
 }
 
 @media (max-width: 640px) {
-  .rgb-channel-input {
+  .color-channel-input {
     font-size: 18px;
   }
 
-  .rgb-channel-label {
+  .color-channel-label {
     font-size: 10px;
   }
 }

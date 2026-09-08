@@ -2,27 +2,27 @@ import type { RGB } from '../../types/color';
 import { hexToRgb } from '../../utils/color';
 import { ChannelField } from './ChannelField';
 
-interface RgbInputProps {
-  rInput: string;
-  gInput: string;
-  bInput: string;
-  onRChange: (value: string) => void;
-  onGChange: (value: string) => void;
-  onBChange: (value: string) => void;
+interface HsvInputProps {
+  hInput: string;
+  sInput: string;
+  vInput: string;
+  onHChange: (value: string) => void;
+  onSChange: (value: string) => void;
+  onVChange: (value: string) => void;
   onPickColor: (rgb: RGB) => void;
   isValid: boolean;
   previewHex: string | null;
 }
 
-export function RgbInput({
-  rInput, gInput, bInput, onRChange, onGChange, onBChange, onPickColor, isValid, previewHex,
-}: RgbInputProps) {
+export function HsvInput({
+  hInput, sInput, vInput, onHChange, onSChange, onVChange, onPickColor, isValid, previewHex,
+}: HsvInputProps) {
   return (
     <div className="color-input-field">
       <div className={`input-group color-channel-group ${isValid ? '' : 'input-group-invalid'}`}>
-        <ChannelField idPrefix="rgb" label="R" value={rInput} onChange={onRChange} min={0} max={255} />
-        <ChannelField idPrefix="rgb" label="G" value={gInput} onChange={onGChange} min={0} max={255} />
-        <ChannelField idPrefix="rgb" label="B" value={bInput} onChange={onBChange} min={0} max={255} />
+        <ChannelField idPrefix="hsv" label="H" value={hInput} onChange={onHChange} min={0} max={360} />
+        <ChannelField idPrefix="hsv" label="S" value={sInput} onChange={onSChange} min={0} max={100} />
+        <ChannelField idPrefix="hsv" label="V" value={vInput} onChange={onVChange} min={0} max={100} />
 
         <div className="custom-select-trigger color-picker-trigger">
           <input
@@ -36,7 +36,7 @@ export function RgbInput({
       </div>
       {!isValid && (
         <p className="color-input-error" role="alert">
-          Each channel must be a whole number from 0 to 255
+          H must be 0–360, S and V must be 0–100
         </p>
       )}
     </div>

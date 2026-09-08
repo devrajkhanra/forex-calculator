@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { CurrencyConverterPage } from './pages/CurrencyConverterPage';
 import { HexColorConverterPage } from './pages/HexColorConverterPage';
 import { RgbColorConverterPage } from './pages/RgbColorConverterPage';
+import { HsvColorConverterPage } from './pages/HsvColorConverterPage';
 import './App.css';
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
             <Route path="/" element={<CurrencyConverterPage />} />
             <Route path="/hex-to-color-converter" element={<HexColorConverterPage />} />
             <Route path="/rgb-to-color-converter" element={<RgbColorConverterPage />} />
+            <Route path="/hsv-to-color-converter" element={<HsvColorConverterPage />} />
           </Routes>
         </main>
 

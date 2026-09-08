@@ -1,4 +1,4 @@
-import type { RGB, HSL, ColorSwatch, ColorInfo } from '../types/color';
+import type { RGB, HSL, HSV, ColorSwatch, ColorInfo } from '../types/color';
 
 const HEX_3_OR_6 = /^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
 
@@ -40,6 +40,20 @@ export function rgbToHex({ r, g, b }: RGB): string {
   return `#${toHexPart(r)}${toHexPart(g)}${toHexPart(b)}`;
 }
 
+/** Hue (0-360) is computed identically for HSL and HSV — only S and L/V differ. */
+function computeHue(rN: number, gN: number, bN: number, max: number, delta: number): number {
+  if (delta === 0) return 0;
+
+  let h: number;
+  if (max === rN) h = ((gN - bN) / delta) % 6;
+  else if (max === gN) h = (bN - rN) / delta + 2;
+  else h = (rN - gN) / delta + 4;
+
+  h *= 60;
+  if (h < 0) h += 360;
+  return h;
+}
+
 export function rgbToHsl({ r, g, b }: RGB): HSL {
   const rN = r / 255;
   const gN = g / 255;
@@ -49,19 +63,50 @@ export function rgbToHsl({ r, g, b }: RGB): HSL {
   const min = Math.min(rN, gN, bN);
   const delta = max - min;
 
-  let h = 0;
-  if (delta !== 0) {
-    if (max === rN) h = ((gN - bN) / delta) % 6;
-    else if (max === gN) h = (bN - rN) / delta + 2;
-    else h = (rN - gN) / delta + 4;
-    h *= 60;
-    if (h < 0) h += 360;
-  }
-
+  const h = computeHue(rN, gN, bN, max, delta);
   const l = (max + min) / 2;
   const s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
 
   return { h: Math.round(h), s: Math.round(s * 100), l: Math.round(l * 100) };
+}
+
+export function rgbToHsv({ r, g, b }: RGB): HSV {
+  const rN = r / 255;
+  const gN = g / 255;
+  const bN = b / 255;
+
+  const max = Math.max(rN, gN, bN);
+  const min = Math.min(rN, gN, bN);
+  const delta = max - min;
+
+  const h = computeHue(rN, gN, bN, max, delta);
+  const s = max === 0 ? 0 : delta / max;
+  const v = max;
+
+  return { h: Math.round(h), s: Math.round(s * 100), v: Math.round(v * 100) };
+}
+
+export function hsvToRgb({ h, s, v }: HSV): RGB {
+  const sN = s / 100;
+  const vN = v / 100;
+
+  const c = vN * sN;
+  const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+  const m = vN - c;
+
+  let r1 = 0, g1 = 0, b1 = 0;
+  if (h < 60) [r1, g1, b1] = [c, x, 0];
+  else if (h < 120) [r1, g1, b1] = [x, c, 0];
+  else if (h < 180) [r1, g1, b1] = [0, c, x];
+  else if (h < 240) [r1, g1, b1] = [0, x, c];
+  else if (h < 300) [r1, g1, b1] = [x, 0, c];
+  else [r1, g1, b1] = [c, 0, x];
+
+  return {
+    r: (r1 + m) * 255,
+    g: (g1 + m) * 255,
+    b: (b1 + m) * 255,
+  };
 }
 
 export function hslToRgb({ h, s, l }: HSL): RGB {
@@ -93,6 +138,10 @@ export function formatRgb(rgb: RGB): string {
 
 export function formatHsl(hsl: HSL): string {
   return `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+}
+
+export function formatHsv(hsv: HSV): string {
+  return `hsv(${hsv.h}, ${hsv.s}%, ${hsv.v}%)`;
 }
 
 /** Linearly interpolates each RGB channel toward `target` by `amount` (0 = no change, 1 = fully `target`). */
@@ -163,13 +212,16 @@ export function getReadableTextColor(hex: string): '#000000' | '#ffffff' {
 export function getColorInfo(rgb: RGB): ColorInfo {
   const hex = rgbToHex(rgb);
   const hsl = rgbToHsl(rgb);
+  const hsv = rgbToHsv(rgb);
 
   return {
     hex,
     rgb,
     hsl,
+    hsv,
     rgbString: formatRgb(rgb),
     hslString: formatHsl(hsl),
+    hsvString: formatHsv(hsv),
     tints: generateTints(hex),
     shades: generateShades(hex),
     tones: generateTones(hex),

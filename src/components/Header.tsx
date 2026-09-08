@@ -22,6 +22,9 @@ export function Header() {
           <NavLink to="/rgb-to-color-converter" className={NAV_LINK_CLASS}>
             RGB to Color
           </NavLink>
+          <NavLink to="/hsv-to-color-converter" className={NAV_LINK_CLASS}>
+            HSV to Color
+          </NavLink>
         </nav>
 
         <ThemeToggle />

@@ -10,6 +10,12 @@ export interface HSL {
   l: number; // 0-100
 }
 
+export interface HSV {
+  h: number; // 0-360
+  s: number; // 0-100
+  v: number; // 0-100
+}
+
 export interface ColorSwatch {
   /** Normalized "#rrggbb" hex string. */
   hex: string;
@@ -22,8 +28,10 @@ export interface ColorInfo {
   hex: string;
   rgb: RGB;
   hsl: HSL;
+  hsv: HSV;
   rgbString: string;
   hslString: string;
+  hsvString: string;
   tints: ColorSwatch[];
   shades: ColorSwatch[];
   tones: ColorSwatch[];
