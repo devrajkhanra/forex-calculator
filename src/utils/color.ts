@@ -1,4 +1,4 @@
-import type { RGB, HSL, HSV, ColorSwatch, ColorInfo } from '../types/color';
+import type { RGB, HSL, HSV, CMYK, ColorSwatch, ColorInfo } from '../types/color';
 
 const HEX_3_OR_6 = /^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
 
@@ -109,6 +109,39 @@ export function hsvToRgb({ h, s, v }: HSV): RGB {
   };
 }
 
+export function rgbToCmyk({ r, g, b }: RGB): CMYK {
+  const rN = r / 255;
+  const gN = g / 255;
+  const bN = b / 255;
+
+  const k = 1 - Math.max(rN, gN, bN);
+  if (k === 1) return { c: 0, m: 0, y: 0, k: 100 };
+
+  const c = (1 - rN - k) / (1 - k);
+  const m = (1 - gN - k) / (1 - k);
+  const y = (1 - bN - k) / (1 - k);
+
+  return {
+    c: Math.round(c * 100),
+    m: Math.round(m * 100),
+    y: Math.round(y * 100),
+    k: Math.round(k * 100),
+  };
+}
+
+export function cmykToRgb({ c, m, y, k }: CMYK): RGB {
+  const cN = c / 100;
+  const mN = m / 100;
+  const yN = y / 100;
+  const kN = k / 100;
+
+  return {
+    r: 255 * (1 - cN) * (1 - kN),
+    g: 255 * (1 - mN) * (1 - kN),
+    b: 255 * (1 - yN) * (1 - kN),
+  };
+}
+
 export function hslToRgb({ h, s, l }: HSL): RGB {
   const sN = s / 100;
   const lN = l / 100;
@@ -142,6 +175,10 @@ export function formatHsl(hsl: HSL): string {
 
 export function formatHsv(hsv: HSV): string {
   return `hsv(${hsv.h}, ${hsv.s}%, ${hsv.v}%)`;
+}
+
+export function formatCmyk(cmyk: CMYK): string {
+  return `cmyk(${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%)`;
 }
 
 /** Linearly interpolates each RGB channel toward `target` by `amount` (0 = no change, 1 = fully `target`). */
@@ -213,15 +250,18 @@ export function getColorInfo(rgb: RGB): ColorInfo {
   const hex = rgbToHex(rgb);
   const hsl = rgbToHsl(rgb);
   const hsv = rgbToHsv(rgb);
+  const cmyk = rgbToCmyk(rgb);
 
   return {
     hex,
     rgb,
     hsl,
     hsv,
+    cmyk,
     rgbString: formatRgb(rgb),
     hslString: formatHsl(hsl),
     hsvString: formatHsv(hsv),
+    cmykString: formatCmyk(cmyk),
     tints: generateTints(hex),
     shades: generateShades(hex),
     tones: generateTones(hex),

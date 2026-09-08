@@ -647,6 +647,16 @@
   padding: 0 4px;
 }
 
+/* Used when a fourth channel field (CMYK) needs to fit alongside the
+   picker in the same fixed-height row as the 3-channel RGB/HSV inputs. */
+.color-channel-group-compact .color-channel-input {
+  font-size: 18px;
+}
+
+.color-channel-group-compact .color-channel-label {
+  font-size: 10px;
+}
+
 @media (max-width: 640px) {
   .color-channel-input {
     font-size: 18px;
@@ -654,5 +664,9 @@
 
   .color-channel-label {
     font-size: 10px;
+  }
+
+  .color-channel-group-compact .color-channel-input {
+    font-size: 15px;
   }
 }

@@ -16,6 +16,13 @@ export interface HSV {
   v: number; // 0-100
 }
 
+export interface CMYK {
+  c: number; // 0-100
+  m: number; // 0-100
+  y: number; // 0-100
+  k: number; // 0-100
+}
+
 export interface ColorSwatch {
   /** Normalized "#rrggbb" hex string. */
   hex: string;
@@ -29,9 +36,11 @@ export interface ColorInfo {
   rgb: RGB;
   hsl: HSL;
   hsv: HSV;
+  cmyk: CMYK;
   rgbString: string;
   hslString: string;
   hsvString: string;
+  cmykString: string;
   tints: ColorSwatch[];
   shades: ColorSwatch[];
   tones: ColorSwatch[];

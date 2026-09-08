@@ -17,13 +17,16 @@ export function Header() {
             Currency
           </NavLink>
           <NavLink to="/hex-to-color-converter" className={NAV_LINK_CLASS}>
-            Hex to Color
+            Hex
           </NavLink>
           <NavLink to="/rgb-to-color-converter" className={NAV_LINK_CLASS}>
-            RGB to Color
+            RGB
           </NavLink>
           <NavLink to="/hsv-to-color-converter" className={NAV_LINK_CLASS}>
-            HSV to Color
+            HSV
+          </NavLink>
+          <NavLink to="/cmyk-to-color-converter" className={NAV_LINK_CLASS}>
+            CMYK
           </NavLink>
         </nav>
 

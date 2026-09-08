@@ -17,6 +17,7 @@ export function ColorDetails({ color, copiedValue, onCopy }: ColorDetailsProps) 
         <ValueRow label="RGB" value={color.rgbString} copied={copiedValue === color.rgbString} onCopy={onCopy} />
         <ValueRow label="HSL" value={color.hslString} copied={copiedValue === color.hslString} onCopy={onCopy} />
         <ValueRow label="HSV" value={color.hsvString} copied={copiedValue === color.hsvString} onCopy={onCopy} />
+        <ValueRow label="CMYK" value={color.cmykString} copied={copiedValue === color.cmykString} onCopy={onCopy} />
       </div>
 
       <SwatchRow
