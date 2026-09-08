@@ -14,10 +14,13 @@ export function Header() {
 
         <nav className="fx-nav" aria-label="Primary">
           <NavLink to="/" end className={NAV_LINK_CLASS}>
-            Currency Converter
+            Currency
           </NavLink>
           <NavLink to="/hex-to-color-converter" className={NAV_LINK_CLASS}>
-            Color Converter
+            Hex to Color
+          </NavLink>
+          <NavLink to="/rgb-to-color-converter" className={NAV_LINK_CLASS}>
+            RGB to Color
           </NavLink>
         </nav>
 

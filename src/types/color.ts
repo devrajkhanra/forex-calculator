@@ -16,3 +16,16 @@ export interface ColorSwatch {
   /** Label shown under the swatch, e.g. "20%" for a tint step. */
   label: string;
 }
+
+/** Everything derivable from a single color, used by every color-tool page regardless of input format. */
+export interface ColorInfo {
+  hex: string;
+  rgb: RGB;
+  hsl: HSL;
+  rgbString: string;
+  hslString: string;
+  tints: ColorSwatch[];
+  shades: ColorSwatch[];
+  tones: ColorSwatch[];
+  complementary: string;
+}

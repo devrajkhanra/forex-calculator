@@ -1,4 +1,4 @@
-import type { RGB, HSL, ColorSwatch } from '../types/color';
+import type { RGB, HSL, ColorSwatch, ColorInfo } from '../types/color';
 
 const HEX_3_OR_6 = /^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
 
@@ -152,4 +152,27 @@ export function getPerceivedBrightness(rgb: RGB): number {
 /** Returns black or white, whichever reads better on top of the given background color. */
 export function getReadableTextColor(hex: string): '#000000' | '#ffffff' {
   return getPerceivedBrightness(hexToRgb(hex)) > 150 ? '#000000' : '#ffffff';
+}
+
+/**
+ * Single source of truth for turning a color into everything a converter
+ * page displays. Every input format (hex, RGB, and any added later)
+ * normalizes to an RGB value first, then calls this — so tint/shade/tone
+ * generation and formatting logic never has to be duplicated per format.
+ */
+export function getColorInfo(rgb: RGB): ColorInfo {
+  const hex = rgbToHex(rgb);
+  const hsl = rgbToHsl(rgb);
+
+  return {
+    hex,
+    rgb,
+    hsl,
+    rgbString: formatRgb(rgb),
+    hslString: formatHsl(hsl),
+    tints: generateTints(hex),
+    shades: generateShades(hex),
+    tones: generateTones(hex),
+    complementary: getComplementaryHex(hex),
+  };
 }
