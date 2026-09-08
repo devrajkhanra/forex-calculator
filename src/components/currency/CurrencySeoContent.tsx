@@ -1,4 +1,4 @@
-export function SeoContent() {
+export function CurrencySeoContent() {
   return (
     <section className="fx-seo-content" aria-labelledby="about-heading">
       <h2 id="about-heading">About This Currency Converter</h2>

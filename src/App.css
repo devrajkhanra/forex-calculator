@@ -39,8 +39,59 @@
   gap: 16px;
 }
 
-.fx-brand {
-  min-width: 0; /* allows text to truncate instead of pushing the toggle off-screen */
+.fx-header-inner {
+  max-width: 900px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.fx-brand-link {
+  min-width: 0; /* allows text to truncate instead of pushing other items off-screen */
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.fx-brand-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+}
+
+.fx-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  flex: 1;
+  justify-content: center;
+}
+
+.fx-nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.fx-nav-link:hover {
+  color: var(--text-main);
+  background-color: var(--bg-btn);
+}
+
+.fx-nav-link-active {
+  color: var(--border-focus);
+  background-color: var(--bg-btn);
 }
 
 .theme-toggle-btn {
@@ -67,25 +118,22 @@
   height: 18px;
 }
 
-.fx-title {
-  font-size: 20px;
+/* Per-page heading (each route supplies its own for on-topic SEO) */
+.fx-page-title {
+  font-size: 28px;
   font-weight: 600;
   color: var(--text-main);
-  margin: 0;
-  letter-spacing: -0.3px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin: 0 0 6px;
+  letter-spacing: -0.5px;
+  text-align: center;
 }
 
-.fx-subtitle {
-  font-size: 12px;
+.fx-page-subtitle {
+  font-size: 15px;
   color: var(--text-muted);
-  margin: 0;
+  margin: 0 0 24px;
   font-weight: 400;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  text-align: center;
 }
 
 /* Main Converter Panel */
@@ -361,15 +409,234 @@
     font-size: 16px;
   }
 
-  .fx-title {
-    font-size: 16px;
+  .fx-brand-title {
+    font-size: 15px;
   }
 
-  .fx-subtitle {
-    font-size: 11px;
+  .fx-nav {
+    gap: 2px;
+  }
+
+  .fx-nav-link {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+
+  .fx-page-title {
+    font-size: 22px;
+  }
+
+  .fx-page-subtitle {
+    font-size: 13px;
   }
 
   .input-group {
     height: 65px; /* Shorter boxes for phone screens */
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Hex to Color Tone Converter                                       */
+/* ---------------------------------------------------------------- */
+
+.color-converter-panel {
+  background-color: var(--bg-panel);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+.color-input-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.color-preview-swatch {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  flex-shrink: 0;
+  transition: background-color 0.15s ease;
+}
+
+.color-input-field {
+  flex: 1;
+  min-width: 0;
+}
+
+.color-input-label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.color-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.color-hex-text-input {
+  flex: 1;
+  min-width: 0;
+  font-size: 18px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.color-hex-text-input:focus {
+  border-color: var(--border-focus);
+}
+
+.color-hex-text-input-invalid {
+  border-color: #ef4444;
+}
+
+.color-native-picker {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.color-input-error {
+  font-size: 12px;
+  color: #ef4444;
+  margin: 6px 0 0;
+}
+
+.color-value-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.color-value-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  cursor: pointer;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.color-value-row:hover {
+  border-color: var(--border-focus);
+}
+
+.color-value-label {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 12px;
+  letter-spacing: 0.4px;
+}
+
+.color-value-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.color-value-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--text-muted);
+}
+
+.color-swatch-row {
+  margin-bottom: 24px;
+}
+
+.color-swatch-row-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0 0 2px;
+}
+
+.color-swatch-row-description {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 10px;
+}
+
+.color-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 8px;
+}
+
+.color-swatch {
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.color-swatch:hover {
+  transform: translateY(-2px);
+}
+
+.color-swatch-label {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.color-swatch-hex {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+}
+
+.color-swatch-icon {
+  width: 11px;
+  height: 11px;
+}
+
+@media (max-width: 640px) {
+  .color-converter-panel {
+    padding: 18px;
+  }
+
+  .color-preview-swatch {
+    width: 48px;
+    height: 48px;
+  }
+
+  .color-swatch-grid {
+    grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
   }
 }

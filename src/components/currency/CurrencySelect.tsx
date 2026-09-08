@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
-import type { CurrenciesResponse } from '../types/fx';
+import type { CurrenciesResponse } from '../../types/fx';
 
 interface CurrencySelectProps {
     currencies: CurrenciesResponse;

@@ -1,5 +1,5 @@
 import { ArrowRightLeft, RefreshCw } from 'lucide-react';
-import type { CurrenciesResponse } from '../types/fx';
+import type { CurrenciesResponse } from '../../types/fx';
 import { CurrencySelect } from './CurrencySelect';
 
 interface ConverterFormProps {

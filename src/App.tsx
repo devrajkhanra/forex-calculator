@@ -1,40 +1,24 @@
+import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
-import { ConverterForm } from './components/ConverterForm';
-import { SeoContent } from './components/SeoContent';
-import { useForex } from './hooks/useForex';
+import { CurrencyConverterPage } from './pages/CurrencyConverterPage';
+import { HexColorConverterPage } from './pages/HexColorConverterPage';
 import './App.css';
 
 export default function App() {
-  const {
-    currencies, amount, setAmount, fromCurrency, setFromCurrency,
-    toCurrency, setToCurrency, result, loading, rateInfo, handleSwap
-  } = useForex();
-
   return (
     <div className="fx-page">
       <Header />
 
       <div className="fx-container">
         <main className="fx-main-content">
-          <ConverterForm
-            currencies={currencies}
-            amount={amount}
-            setAmount={setAmount}
-            fromCurrency={fromCurrency}
-            setFromCurrency={setFromCurrency}
-            toCurrency={toCurrency}
-            setToCurrency={setToCurrency}
-            onSwap={handleSwap}
-            result={result}
-            loading={loading}
-            rateInfo={rateInfo}
-          />
-
-          <SeoContent />
+          <Routes>
+            <Route path="/" element={<CurrencyConverterPage />} />
+            <Route path="/hex-to-color-converter" element={<HexColorConverterPage />} />
+          </Routes>
         </main>
 
         <footer className="fx-app-footer">
-          Powered by Frankfurter API
+          Daily Codify — free, fast tools for everyday conversions.
         </footer>
       </div>
     </div>
