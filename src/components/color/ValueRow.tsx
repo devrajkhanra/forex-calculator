@@ -18,7 +18,7 @@ export function ValueRow({ label, value, copied, onCopy }: ValueRowProps) {
       <span className="color-value-label">{label}</span>
       <span className="color-value-text">
         {value}
-        {copied ? <Check className="color-value-icon" aria-hidden="true" /> : <Copy className="color-value-icon" aria-hidden="true" />}
+        {copied ? <Check className="dropdown-icon" aria-hidden="true" /> : <Copy className="dropdown-icon" aria-hidden="true" />}
       </span>
     </button>
   );

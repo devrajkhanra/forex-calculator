@@ -10,7 +10,7 @@ export function HexColorConverter() {
   const { copy, copiedValue } = useClipboardCopy();
 
   return (
-    <div className="color-converter-panel">
+    <div className="converter-panel">
       <HexInput
         rawInput={rawInput}
         onChange={setRawInput}
