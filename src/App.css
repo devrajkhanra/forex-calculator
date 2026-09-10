@@ -670,3 +670,168 @@
     font-size: 15px;
   }
 }
+
+/* ---------------------------------------------------------------- */
+/* Color Studio — unified tabbed color tool (Picker/Hex/RGB/HSV/CMYK)*/
+/* ---------------------------------------------------------------- */
+
+.color-studio-hero {
+  height: 90px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: background-color 0.15s ease;
+  overflow: hidden;
+}
+
+.color-studio-hero-hex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.color-tab-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.color-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--bg-body);
+  color: var(--text-muted);
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.color-tab:hover {
+  color: var(--text-main);
+  border-color: var(--border-focus);
+}
+
+.color-tab-active {
+  background-color: var(--border-focus);
+  border-color: var(--border-focus);
+  color: #ffffff;
+}
+
+.color-tab-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.color-tab-random {
+  margin-left: auto;
+}
+
+/* Visual saturation/brightness + hue picker */
+.color-tone-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.color-tone-square {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: crosshair;
+  touch-action: none;
+  overflow: hidden;
+}
+
+.color-tone-square:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.color-tone-square-thumb {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.color-tone-hue-slider {
+  width: 100%;
+  height: 14px;
+  border-radius: 7px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000
+  );
+}
+
+.color-tone-hue-slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--border-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.color-tone-hue-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--border-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .color-studio-hero {
+    height: 72px;
+  }
+
+  .color-studio-hero-hex {
+    font-size: 22px;
+  }
+
+  .color-tab {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+
+  .color-tab-random {
+    margin-left: 0;
+  }
+
+  .color-tone-square {
+    height: 160px;
+  }
+}

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
-import { isValidHex, normalizeHex, hexToRgb, getColorInfo } from '../utils/color';
+import { isValidHex, normalizeHex, hexToRgb, rgbToHex, getColorInfo } from '../utils/color';
+import type { RGB } from '../types/color';
 
 const DEFAULT_HEX = '#38bdf8';
 
@@ -14,9 +15,13 @@ export function useHexColor() {
     return getColorInfo(hexToRgb(normalized));
   }, [normalized]);
 
+  /** Used by the native picker and cross-tab sync to set the input from one RGB value at once. */
+  const setFromRgb = (rgb: RGB) => setRawInput(rgbToHex(rgb));
+
   return {
     rawInput,
     setRawInput,
+    setFromRgb,
     isValid,
     color,
   };

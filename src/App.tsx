@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { CurrencyConverterPage } from './pages/CurrencyConverterPage';
+import { ColorConverterHubPage } from './pages/ColorConverterHubPage';
 import { HexColorConverterPage } from './pages/HexColorConverterPage';
 import { RgbColorConverterPage } from './pages/RgbColorConverterPage';
 import { HsvColorConverterPage } from './pages/HsvColorConverterPage';
@@ -16,6 +17,7 @@ export default function App() {
         <main className="fx-main-content">
           <Routes>
             <Route path="/" element={<CurrencyConverterPage />} />
+            <Route path="/color-converter" element={<ColorConverterHubPage />} />
             <Route path="/hex-to-color-converter" element={<HexColorConverterPage />} />
             <Route path="/rgb-to-color-converter" element={<RgbColorConverterPage />} />
             <Route path="/hsv-to-color-converter" element={<HsvColorConverterPage />} />

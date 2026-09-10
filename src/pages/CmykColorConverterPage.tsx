@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { CmykColorConverter } from '../components/color/CmykColorConverter';
+import { ColorStudio } from '../components/color/ColorStudio';
 import { CmykSeoContent } from '../components/color/CmykSeoContent';
 import { SITE_URL, SITE_NAME } from '../constants/site';
 
@@ -36,7 +36,7 @@ export function CmykColorConverterPage() {
       <h1 className="fx-page-title">CMYK to Color Tone Converter</h1>
       <p className="fx-page-subtitle">Generate tints, shades, tones, and the complementary color from CMYK values.</p>
 
-      <CmykColorConverter />
+      <ColorStudio initialTab="cmyk" />
       <CmykSeoContent />
     </>
   );

@@ -1,13 +1,13 @@
 import { Helmet } from 'react-helmet-async';
 import { ColorStudio } from '../components/color/ColorStudio';
-import { RgbSeoContent } from '../components/color/RgbSeoContent';
+import { ColorHubSeoContent } from '../components/color/ColorHubSeoContent';
 import { SITE_URL, SITE_NAME } from '../constants/site';
 
-const TITLE = 'RGB to Color Tone Converter - Tints, Shades & Tones Generator';
-const DESCRIPTION = 'Convert RGB values to HEX and HSL, then generate matching tints, shades, tones, and the complementary color instantly. Free, no sign-up.';
-const PATH = '/rgb-to-color-converter';
+const TITLE = 'Color Converter - Hex, RGB, HSV, CMYK & Visual Picker, All in One';
+const DESCRIPTION = 'Convert between HEX, RGB, HSV, and CMYK, or pick a color visually. Every format stays in sync, plus tints, shades, tones, and the complementary color. Free, no sign-up.';
+const PATH = '/color-converter';
 
-export function RgbColorConverterPage() {
+export function ColorConverterHubPage() {
   return (
     <>
       <Helmet>
@@ -23,7 +23,7 @@ export function RgbColorConverterPage() {
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebApplication',
-            name: `${SITE_NAME} - RGB to Color Tone Converter`,
+            name: `${SITE_NAME} - Color Converter`,
             url: `${SITE_URL}${PATH}`,
             applicationCategory: 'DesignApplication',
             operatingSystem: 'Any',
@@ -33,11 +33,11 @@ export function RgbColorConverterPage() {
         </script>
       </Helmet>
 
-      <h1 className="fx-page-title">RGB to Color Tone Converter</h1>
-      <p className="fx-page-subtitle">Generate tints, shades, tones, and the complementary color from RGB values.</p>
+      <h1 className="fx-page-title">Color Converter</h1>
+      <p className="fx-page-subtitle">Hex, RGB, HSV, CMYK, and a visual picker — all in one place, always in sync.</p>
 
-      <ColorStudio initialTab="rgb" />
-      <RgbSeoContent />
+      <ColorStudio initialTab="picker" />
+      <ColorHubSeoContent />
     </>
   );
 }

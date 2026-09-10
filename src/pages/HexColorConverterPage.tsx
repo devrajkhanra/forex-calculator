@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { HexColorConverter } from '../components/color/HexColorConverter';
+import { ColorStudio } from '../components/color/ColorStudio';
 import { ColorSeoContent } from '../components/color/ColorSeoContent';
 import { SITE_URL, SITE_NAME } from '../constants/site';
 
@@ -36,7 +36,7 @@ export function HexColorConverterPage() {
       <h1 className="fx-page-title">Hex to Color Tone Converter</h1>
       <p className="fx-page-subtitle">Generate tints, shades, tones, and the complementary color from any hex code.</p>
 
-      <HexColorConverter />
+      <ColorStudio initialTab="hex" />
       <ColorSeoContent />
     </>
   );

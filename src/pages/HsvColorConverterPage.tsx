@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { HsvColorConverter } from '../components/color/HsvColorConverter';
+import { ColorStudio } from '../components/color/ColorStudio';
 import { HsvSeoContent } from '../components/color/HsvSeoContent';
 import { SITE_URL, SITE_NAME } from '../constants/site';
 
@@ -36,7 +36,7 @@ export function HsvColorConverterPage() {
       <h1 className="fx-page-title">HSV to Color Tone Converter</h1>
       <p className="fx-page-subtitle">Generate tints, shades, tones, and the complementary color from HSV values.</p>
 
-      <HsvColorConverter />
+      <ColorStudio initialTab="hsv" />
       <HsvSeoContent />
     </>
   );
