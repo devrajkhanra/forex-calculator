@@ -36,7 +36,7 @@ export function HexColorConverterPage() {
       <h1 className="fx-page-title">Hex to Color Tone Converter</h1>
       <p className="fx-page-subtitle">Generate tints, shades, tones, and the complementary color from any hex code.</p>
 
-      <ColorStudio initialTab="hex" />
+      <ColorStudio />
       <ColorSeoContent />
     </>
   );

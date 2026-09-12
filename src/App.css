@@ -447,46 +447,6 @@
   margin-bottom: 30px;
 }
 
-/* Native color picker, restyled to sit inside .custom-select-trigger
-   the same way the currency dropdown trigger does. */
-.color-picker-trigger {
-  padding: 0 12px;
-  cursor: pointer;
-}
-
-.color-native-picker {
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  background: none;
-  cursor: pointer;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.color-native-picker::-webkit-color-swatch-wrapper {
-  padding: 0;
-  border-radius: 4px;
-}
-
-.color-native-picker::-webkit-color-swatch {
-  border: none;
-  border-radius: 4px;
-}
-
-.input-group-invalid {
-  border-color: #ef4444;
-}
-
-.color-input-error {
-  text-align: center;
-  font-size: 13px;
-  color: #ef4444;
-  margin: 10px 0 0;
-}
-
 .color-value-list {
   display: flex;
   flex-direction: column;
@@ -610,69 +570,9 @@
   }
 }
 
-/* Multi-field channel input row (used by RGB and HSV inputs) — sits
-   inside the same .input-group used by the hex/currency inputs; only
-   the internal channel layout differs. */
-.color-channel-group {
-  align-items: stretch;
-}
-
-.color-channel {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  border-left: 1px solid var(--border-color);
-}
-
-.color-channel:first-child {
-  border-left: none;
-}
-
-.color-channel-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
-  margin-bottom: 2px;
-}
-
-.color-channel-input {
-  width: 100%;
-  text-align: center;
-  font-size: 22px;
-  padding: 0 4px;
-}
-
-/* Used when a fourth channel field (CMYK) needs to fit alongside the
-   picker in the same fixed-height row as the 3-channel RGB/HSV inputs. */
-.color-channel-group-compact .color-channel-input {
-  font-size: 18px;
-}
-
-.color-channel-group-compact .color-channel-label {
-  font-size: 10px;
-}
-
-@media (max-width: 640px) {
-  .color-channel-input {
-    font-size: 18px;
-  }
-
-  .color-channel-label {
-    font-size: 10px;
-  }
-
-  .color-channel-group-compact .color-channel-input {
-    font-size: 15px;
-  }
-}
-
 /* ---------------------------------------------------------------- */
-/* Color Studio — unified tabbed color tool (Picker/Hex/RGB/HSV/CMYK)*/
+/* Color Studio — unified color tool (visual picker drives every     */
+/* format; results shown via ColorDetails below)                     */
 /* ---------------------------------------------------------------- */
 
 .color-studio-hero {
@@ -693,55 +593,39 @@
   gap: 10px;
   background: none;
   border: none;
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  font-size: 32px;
   color: inherit;
   cursor: pointer;
   font-family: inherit;
 }
 
-.color-tab-bar {
+.color-random-btn {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  margin-bottom: 28px;
-}
-
-.color-tab {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  width: 100%;
+  margin-top: 16px;
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: 4px;
   background-color: var(--bg-body);
   color: var(--text-muted);
-  padding: 8px 14px;
-  font-size: 13px;
+  padding: 10px 14px;
+  font-size: 14px;
   font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.color-tab:hover {
+.color-random-btn:hover {
   color: var(--text-main);
   border-color: var(--border-focus);
 }
 
-.color-tab-active {
-  background-color: var(--border-focus);
-  border-color: var(--border-focus);
-  color: #ffffff;
-}
-
-.color-tab-icon {
+.color-btn-icon {
   width: 15px;
   height: 15px;
-}
-
-.color-tab-random {
-  margin-left: auto;
 }
 
 /* Visual saturation/brightness + hue picker */
@@ -819,16 +703,7 @@
   }
 
   .color-studio-hero-hex {
-    font-size: 22px;
-  }
-
-  .color-tab {
-    padding: 7px 10px;
-    font-size: 12px;
-  }
-
-  .color-tab-random {
-    margin-left: 0;
+    font-size: 24px;
   }
 
   .color-tone-square {

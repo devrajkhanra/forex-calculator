@@ -4,7 +4,7 @@ import type { RGB } from '../types/color';
 
 const DEFAULT_H = 198;
 const DEFAULT_S = 77;
-const DEFAULT_V = 97; // matches useHexColor/useRgbColor's default #38bdf8
+const DEFAULT_V = 97; // matches the app's default color, #38bdf8
 
 function parseChannel(raw: string): number | null {
   if (raw.trim() === '') return null;

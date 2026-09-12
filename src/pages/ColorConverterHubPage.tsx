@@ -36,7 +36,7 @@ export function ColorConverterHubPage() {
       <h1 className="fx-page-title">Color Converter</h1>
       <p className="fx-page-subtitle">Hex, RGB, HSV, CMYK, and a visual picker — all in one place, always in sync.</p>
 
-      <ColorStudio initialTab="picker" />
+      <ColorStudio />
       <ColorHubSeoContent />
     </>
   );

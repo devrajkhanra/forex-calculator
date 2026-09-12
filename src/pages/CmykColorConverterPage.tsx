@@ -36,7 +36,7 @@ export function CmykColorConverterPage() {
       <h1 className="fx-page-title">CMYK to Color Tone Converter</h1>
       <p className="fx-page-subtitle">Generate tints, shades, tones, and the complementary color from CMYK values.</p>
 
-      <ColorStudio initialTab="cmyk" />
+      <ColorStudio />
       <CmykSeoContent />
     </>
   );

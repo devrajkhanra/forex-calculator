@@ -36,7 +36,7 @@ export function RgbColorConverterPage() {
       <h1 className="fx-page-title">RGB to Color Tone Converter</h1>
       <p className="fx-page-subtitle">Generate tints, shades, tones, and the complementary color from RGB values.</p>
 
-      <ColorStudio initialTab="rgb" />
+      <ColorStudio />
       <RgbSeoContent />
     </>
   );
